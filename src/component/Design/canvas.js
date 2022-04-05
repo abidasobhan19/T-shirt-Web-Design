@@ -3,30 +3,27 @@ import { fabric } from "fabric";
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
 import Myimg from "../../img/a.jpg";
 const Cantest = () => {
-  const { selectedObjects, editor, onReady } = useFabricJSEditor();
-  // useEffect(() => {
-  //   fabric.Image.fromURL(Myimg, function (oImg) {
-  //     oImg.scaleToHeight(100);
-  //     oImg.scaleToWidth(100);
-  //     editor.canvas.add(oImg);
-  //   });
-  // });
+  const [Newimgstate, SetnewImgstate] = useState();
 
-  fabric.Image.fromURL(Myimg, function (oImg) {
-    oImg.scaleToHeight(100);
-    oImg.scaleToWidth(140);
-    editor.canvas.add(oImg);
-    console.log(oImg);
+  const { selectedObjects, editor, onReady } = useFabricJSEditor();
+  const onAddRectangle = () => {
+    editor?.addRectangle();
+  };
+
+  useEffect(() => {
+    fabric.Image.fromURL(Myimg, function (oImg) {
+      oImg.scaleToHeight(100);
+      oImg.scaleToWidth(100);
+      console.log(oImg);
+      editor?.canvas.add(oImg).renderAll.bind(editor.canvas);
+    });
   });
 
   return (
     <div>
       <div>
-        <FabricJSCanvas
-          id="canvas"
-          className="sample-canvas"
-          onReady={onReady}
-        />
+        <FabricJSCanvas className="sample-canvas" onReady={onReady} />
+        <button onClick={onAddRectangle}>Add Rectangle</button>
       </div>
     </div>
   );
