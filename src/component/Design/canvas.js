@@ -15,9 +15,11 @@ const Cantest = () => {
 
   const initCanvas = () =>
     new fabric.Canvas("canvas", {
-      height: 100,
-      width: 150,
-      backgroundColor: "pink",
+
+      marginTop:90,
+      height: 200,
+      width: 200,
+      // backgroundColor: "pink",
     });
 
   const addImg = (e, url, canvi) => {
@@ -27,8 +29,8 @@ const Cantest = () => {
         left: 0,
         top: 0,
 
-        width: 150,
-        height: 100,
+        // width: 200,
+        // height: 100,
         // Scale image to fit width / height ?
       });
       img.scale(0.85);

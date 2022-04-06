@@ -1,9 +1,13 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
 import BlackTshirt from "../../img/T-shirt Layout/T-shirt.png";
+import Front from "../../img/T-shirt Layout/front.png"
+import Back from "../../img/T-shirt Layout/back.png"
 import Canvastest from "./canvas";
+import { connect } from "react-redux";
 import domtoimage from "dom-to-image";
-const Display = () => {
+const Display = ({Shirt_side}) => {
+  
   const getimage = () => {
     console.log("hello");
     var node = document.getElementById("my-node");
@@ -23,15 +27,15 @@ const Display = () => {
 
   return (
     <Box id="my-node" display="flex" flexGrow="1">
-      <Box style={{ marginTop: 80, marginLeft: "25%" }}>
-        <img style={{ fillColor: "black" }} src={BlackTshirt} alt="t-shirt" />
-      </Box>
+      {Shirt_side ==="front"?<Box   >
+        <img style={{ fillColor: "black" }} src={Front} alt="t-shirt" />
+      </Box>:    <img style={{ fillColor: "black" }} src={Back} alt="t-shirt" />}
       <Box
         style={{
-          width: 150,
-          height: 100,
-          marginTop: 150,
-          marginLeft: -210,
+          width: 500,
+          height: 200,
+          marginTop: Shirt_side==="front"?150:100,     
+          marginLeft: -345,
         }}
       >
         <Canvastest />
@@ -44,4 +48,12 @@ const Display = () => {
   );
 };
 
-export default Display;
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    ...state,
+  };
+};
+
+export default connect(mapStateToProps)(Display);
