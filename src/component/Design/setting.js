@@ -1,5 +1,5 @@
 import React from "react";
-
+import { connect } from "react-redux";
 import { Box, Typography } from "@mui/material";
 import SettingHeader from "./setting/settingHeader";
 import Config from "./setting/config";
@@ -14,4 +14,15 @@ const Setting = () => {
   );
 };
 
-export default Setting;
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    ...state,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  
+)(Setting);

@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { connect } from "react-redux";
+import { setSideData } from "../../../redux/action/device_action";
 import { Box } from "@mui/material";
-const Radiopanel = () => {
+const Radiopanel = ({setSideData}) => {
   const [value, setValue] = useState("front");
 
   const handleChange = (event) => {
     setValue(event.target.value);
-    console.log(event.target.value);
+    setSideData(event.target.value);
   };
+
+  useEffect(()=>{
+    setSideData(value)
+  })
 
   return (
     <Box style={{ marginLeft: 10 }}>
@@ -44,4 +50,15 @@ const Radiopanel = () => {
   );
 };
 
-export default Radiopanel;
+
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setSideData: (shirt) => dispatch(setSideData(shirt)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Radiopanel);
