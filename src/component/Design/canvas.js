@@ -17,7 +17,7 @@ const Cantest = () => {
     new fabric.Canvas("canvas", {
       height: 100,
       width: 150,
-      backgroundColor: "white",
+      backgroundColor: "pink",
     });
 
   const addImg = (e, url, canvi) => {
@@ -26,7 +26,7 @@ const Cantest = () => {
       img.set({
         left: 0,
         top: 0,
-        padding: 10,
+
         width: 150,
         height: 100,
         // Scale image to fit width / height ?
