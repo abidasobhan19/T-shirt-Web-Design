@@ -44,9 +44,7 @@ const Setting = () => {
       width: 400,
       backgroundColor: "pink",
     });
-  // const addRect = canvi => {
-  //   ...
-  // }
+
   const addImg = (e, url, canvi) => {
     e.preventDefault();
     new fabric.Image.fromURL(url, (img) => {

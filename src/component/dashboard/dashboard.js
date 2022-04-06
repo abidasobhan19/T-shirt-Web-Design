@@ -13,8 +13,8 @@ const Dashboard = () => {
         justifyContent="center"
         style={{ margin: 20 }}
       >
-        {/* <Display /> */}
-        <Setting />
+        <Display />
+        {/* <Setting /> */}
       </Box>
     </Box>
   );
