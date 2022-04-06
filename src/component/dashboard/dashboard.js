@@ -14,7 +14,7 @@ const Dashboard = () => {
         style={{ margin: 20 }}
       >
         <Display />
-        {/* <Setting /> */}
+        <Setting />
       </Box>
     </Box>
   );
