@@ -1,29 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Box, Button } from "@mui/material";
 
-import Front from "../../img/T-shirt Layout/front.png";
-import Back from "../../img/T-shirt Layout/back.png";
 import Canvastest from "./canvas";
 import { connect } from "react-redux";
 import domtoimage from "dom-to-image";
 const Display = ({ Shirt_side, Color }) => {
-  const [tshirtColor, SetTShirtColor] = useState();
-
-  const data = {
-    back: Back,
-    front: Front,
-  };
-
-  useEffect(() => {
-    SetTShirtColor(data);
-  }, []);
-
-  useEffect(() => {
-    if (data.lenght != null) {
-      console.log(data.back);
-    }
-  }, []);
-
   const getimage = () => {
     console.log("hello");
     var node = document.getElementById("my-node");
@@ -48,7 +29,7 @@ const Display = ({ Shirt_side, Color }) => {
           <img style={{ fillColor: "black" }} src={Color.front} alt="t-shirt" />
         </Box>
       ) : (
-        <img style={{ fillColor: "black" }} src={Color.Back} alt="t-shirt" />
+        <img style={{ fillColor: "black" }} src={Color.back} alt="t-shirt" />
       )}
       <Box
         style={{
