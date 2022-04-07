@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Switch from "@mui/material/Switch";
 import { Box, Typography } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-const Config = () => {
+import { connect } from "react-redux";
+import { setShirtColor } from "../../../redux/action/color_action";
+import { ShirtData } from "../../../data";
+import Blackfront from "../../../img/T-shirt Layout/blackFront.png";
+import BlackBack from "../../../img/T-shirt Layout/blackBack.png";
+import Front from "../../../img/T-shirt Layout/front.png";
+import Back from "../../../img/T-shirt Layout/back.png";
+const Config = ({ setShirtColor }) => {
   const [checked, setChecked] = React.useState(true);
   const handleChange = (event) => {
     setChecked(event.target.checked);
@@ -16,6 +23,21 @@ const Config = () => {
   const handleChange2 = (event) => {
     setAge(event.target.value);
   };
+
+  useEffect(() => {
+    switch (age) {
+      case 0:
+        setShirtColor({ front: Front, back: Back });
+        break;
+      case 1:
+        setShirtColor({ front: Blackfront, back: BlackBack });
+        break;
+      default:
+        setShirtColor({ front: Front, back: Back });
+        break;
+    }
+  }, [age]);
+
   return (
     <Box>
       <Box
@@ -58,9 +80,8 @@ const Config = () => {
               label="Select Default Color"
               onChange={handleChange2}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value={0}>White</MenuItem>
+              <MenuItem value={1}>Black</MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -69,4 +90,14 @@ const Config = () => {
   );
 };
 
-export default Config;
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setShirtColor: (shirt) => dispatch(setShirtColor(shirt)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Config);

@@ -14,15 +14,10 @@ const Setting = () => {
   );
 };
 
-
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     ...state,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  
-)(Setting);
+export default connect(mapStateToProps)(Setting);
