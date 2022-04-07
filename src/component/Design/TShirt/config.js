@@ -12,6 +12,9 @@ import Blackfront from "../../../img/T-shirt Layout/blackFront.png";
 import BlackBack from "../../../img/T-shirt Layout/blackBack.png";
 import Front from "../../../img/T-shirt Layout/front.png";
 import Back from "../../../img/T-shirt Layout/back.png";
+
+import Asphaltfront from "../../../img/T-shirt Layout/Asplatfront.png"
+import Asphaltback from "../../../img/T-shirt Layout/Asplatback.png"
 const Config = ({ setShirtColor }) => {
   const [checked, setChecked] = React.useState(true);
   const handleChange = (event) => {
@@ -32,6 +35,9 @@ const Config = ({ setShirtColor }) => {
       case 1:
         setShirtColor({ front: Blackfront, back: BlackBack });
         break;
+        case 2:
+          setShirtColor({ front: Asphaltfront, back:  Asphaltback  });
+          break;
       default:
         setShirtColor({ front: Front, back: Back });
         break;
@@ -82,6 +88,7 @@ const Config = ({ setShirtColor }) => {
             >
               <MenuItem value={0}>White</MenuItem>
               <MenuItem value={1}>Black</MenuItem>
+              <MenuItem value={2}>Asphalt</MenuItem>
             </Select>
           </FormControl>
         </Box>

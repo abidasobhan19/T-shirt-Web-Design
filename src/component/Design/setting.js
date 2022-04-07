@@ -1,16 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Box, Typography } from "@mui/material";
-import SettingHeader from "./setting/settingHeader";
-import Config from "./setting/config";
-import RadioPanel from "./setting/panel";
-const Setting = () => {
+import { Box, Typography ,Select,Options} from "@mui/material";
+import SettingHeader from "./TShirt/settingHeader";
+import Config from "./TShirt/config";
+import RadioPanel from "./TShirt/panel";
+import HoodieConfig from "./Hoodie/hoodieConfig"
+const Setting = ({SetInterface}) => {
   return (
-    <Box>
-      <SettingHeader />
-      <Config />
-      <RadioPanel />
-    </Box>
+  <Box > 
+
+
+            
+              
+              <Box onClick={()=>SetInterface(0) } style={{cursor:"pointer"}}>
+  <SettingHeader />
+  <Config />
+  <RadioPanel />
+</Box>
+             
+    
+      
+
+
+
+
+
+  
+
+<Box onClick={()=>SetInterface(1) } style={{cursor:"pointer"}}>
+<HoodieConfig/>
+  
+</Box>
+</Box>
   );
 };
 

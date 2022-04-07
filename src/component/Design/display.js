@@ -1,10 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Switch } from "@mui/material";
 
 import Canvastest from "./canvas";
 import { connect } from "react-redux";
 import domtoimage from "dom-to-image";
-const Display = ({ Shirt_side, Color }) => {
+const Display = ({ Shirt_side, Color,visibleData}) => {
+
+console.log(visibleData)
+const [tshirtVisble,setVibility] = useState(false)
+
+
+useEffect(()=>{
+  switch (visibleData) {
+    case 0:
+      setVibility(true)
+      break;
+      case 1:
+        setVibility(false)
+        break;
+    
+    default:
+      setVibility(true)
+      break;
+  }
+})
+
   const getimage = () => {
     console.log("hello");
     var node = document.getElementById("my-node");
@@ -24,13 +44,13 @@ const Display = ({ Shirt_side, Color }) => {
 
   return (
     <Box id="my-node" display="flex" flexGrow="1">
-      {Shirt_side === "front" ? (
+    {tshirtVisble=== true? <Box > {Shirt_side === "front" ? (
         <Box>
           <img style={{ fillColor: "black" }} src={Color.front} alt="t-shirt" />
         </Box>
       ) : (
         <img style={{ fillColor: "black" }} src={Color.back} alt="t-shirt" />
-      )}
+      )}</Box>:"null"}
       <Box
         style={{
           width: 500,
