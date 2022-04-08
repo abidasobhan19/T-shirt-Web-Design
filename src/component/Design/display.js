@@ -4,26 +4,57 @@ import { Box, Button, Switch } from "@mui/material";
 import Canvastest from "./canvas";
 import { connect } from "react-redux";
 import domtoimage from "dom-to-image";
+import Tshirt from "./TShirt/tshirt"
+import Hoodie from "./Hoodie/hoodie"
+import Longsleeve from "./LongSleeve/longsleeve";
+import KidsTshirt from "./Kids/kid"
 const Display = ({ Shirt_side, Color,visibleData}) => {
 
-console.log(visibleData)
-const [tshirtVisble,setVibility] = useState(false)
 
+const [tshirtVisble,setVibility] = useState(false)
+const [hoddievisible,sethoodievisible] = useState(false)
+const [longsleevevisible,setlongsleeveVisible]= useState(false)
+const [kidsTshirtVisible,setKidsTshirtVisible] = useState(false)
 
 useEffect(()=>{
   switch (visibleData) {
     case 0:
       setVibility(true)
+      sethoodievisible(false)
+      setlongsleeveVisible(false)
+      setKidsTshirtVisible(false)
       break;
       case 1:
-        setVibility(false)
+        if(visibleData===1){
+          setVibility(false)
+          setlongsleeveVisible(false)
+          setKidsTshirtVisible(false)
+          sethoodievisible(true)
+        }
+       
         break;
+        case 2:
+          if(visibleData===2){
+            setVibility(false)
+            sethoodievisible(false)
+            setKidsTshirtVisible(false)
+            setlongsleeveVisible(true)
+          }
+          break;
+          case 3:
+            if(visibleData===3){
+              setVibility(false)
+              sethoodievisible(false)
+              setlongsleeveVisible(false)
+              setKidsTshirtVisible(true)
+            }
+            break;
     
     default:
       setVibility(true)
       break;
   }
-})
+},[visibleData])
 
   const getimage = () => {
     console.log("hello");
@@ -44,13 +75,10 @@ useEffect(()=>{
 
   return (
     <Box id="my-node" display="flex" flexGrow="1">
-    {tshirtVisble=== true? <Box > {Shirt_side === "front" ? (
-        <Box>
-          <img style={{ fillColor: "black" }} src={Color.front} alt="t-shirt" />
-        </Box>
-      ) : (
-        <img style={{ fillColor: "black" }} src={Color.back} alt="t-shirt" />
-      )}</Box>:"null"}
+    {tshirtVisble=== true? <Tshirt/>:""}
+    {hoddievisible===true ? <Hoodie/>:""}
+    {longsleevevisible===true?<Longsleeve/> :""}
+    {kidsTshirtVisible=== true?<KidsTshirt/>:""}
       <Box
         style={{
           width: 500,

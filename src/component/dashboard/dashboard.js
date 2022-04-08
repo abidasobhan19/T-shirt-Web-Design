@@ -14,7 +14,7 @@ const Dashboard = () => {
         display="flex"
         flexDirection="row"
         justifyContent="center"
-        style={{ margin: 20 }}
+        style={{ margin: 20 ,padding:10}}
       >
         <Display visibleData={data} />
         <Setting SetInterface={SetInterface}/>
