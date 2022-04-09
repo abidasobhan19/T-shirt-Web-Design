@@ -22,7 +22,7 @@ useEffect(()=>{
       setVibility(true)
       sethoodievisible(false)
       setlongsleeveVisible(false)
-      setKidsTshirtVisible(false)
+        setKidsTshirtVisible(false)
       break;
       case 1:
         if(visibleData===1){
@@ -81,9 +81,9 @@ useEffect(()=>{
     {kidsTshirtVisible=== true?<KidsTshirt/>:""}
       <Box
         style={{
-          width: 500,
+          width: 300,
           height: 200,
-          marginTop: Shirt_side === "front" ? 150 : 100,
+          marginTop: Shirt_side === "front" ? 120 : 80,
           marginLeft: -345,
         }}
       >

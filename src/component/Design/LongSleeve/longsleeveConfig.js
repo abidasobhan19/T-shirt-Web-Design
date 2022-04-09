@@ -57,20 +57,12 @@ const LongSleeveConfig = ({ setShirtColor }) => {
         }}
       >
         <Box display="flex" flexGrow="1">
-          <Typography style={{ color: "Black", marginLeft: 30 }}>
+          <Typography style={{ color: "Black", marginLeft: 26 }}>
             LongSleve
           </Typography>
         </Box>
 
-        {/* toggle button */}
-        <Box display="flex" flexGrow="1" style={{ marginLeft: -50 }}>
-          <Switch
-            checked={checked}
-            onChange={handleChange}
-            inputProps={{ "aria-label": "controlled" }}
-          />
-        </Box>
-        {/* color selection */}
+       
         <Box
           display="flex"
           flexGrow="1"

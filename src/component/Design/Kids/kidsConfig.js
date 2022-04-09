@@ -57,20 +57,12 @@ const Kidsonfig = ({ setShirtColor }) => {
         }}
       >
         <Box display="flex" flexGrow="1">
-          <Typography style={{ color: "Black", marginLeft: 50 }}>
+          <Typography style={{ color: "Black", marginLeft: 70 }}>
             Kids
           </Typography>
         </Box>
 
-        {/* toggle button */}
-        <Box display="flex" flexGrow="1" style={{ marginLeft: -60 }}>
-          <Switch
-            checked={checked}
-            onChange={handleChange}
-            inputProps={{ "aria-label": "controlled" }}
-          />
-        </Box>
-        {/* color selection */}
+      
         <Box
           display="flex"
           flexGrow="1"

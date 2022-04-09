@@ -3,13 +3,19 @@ import { Box } from "@mui/material";
 import Navbar from "./nav";
 import Display from "../Design/display";
 import Setting from "../Design/setting";
+import Image from "../Design/image";
+
 const Dashboard = () => {
 
   const [data , SetInterface] = useState();
-  console.log(data)
+  
   return (
     <Box>
       <Navbar />
+
+      <Box style={{width:"100%",height:"100Vh"}}>
+    <Image />
+      </Box>
       <Box
         display="flex"
         flexDirection="row"

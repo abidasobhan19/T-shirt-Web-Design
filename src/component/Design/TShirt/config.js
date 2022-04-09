@@ -60,16 +60,6 @@ const Config = ({ setShirtColor }) => {
             T-Shirt
           </Typography>
         </Box>
-
-        {/* toggle button */}
-        <Box display="flex" flexGrow="1" style={{ marginLeft: -50 }}>
-          <Switch
-            checked={checked}
-            onChange={handleChange}
-            inputProps={{ "aria-label": "controlled" }}
-          />
-        </Box>
-        {/* color selection */}
         <Box
           display="flex"
           flexGrow="1"
