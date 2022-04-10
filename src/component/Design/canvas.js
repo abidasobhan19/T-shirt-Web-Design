@@ -1,72 +1,62 @@
 import React, { useEffect, useState } from "react";
 import { fabric } from "fabric";
+
 import { connect } from "react-redux";
-import "../Design/style.css"
+import "../Design/style.css";
 import FFF from "../../img/T-shirt Layout/fffff.jpeg";
-const Cantest = ({image}) => {
+const Cantest = ({ image }) => {
   const [canvas, setCanvas] = useState("");
   const [imgURL, setImgURL] = useState("");
 
-  
   useEffect(() => {
     setCanvas(initCanvas());
   }, []);
 
   const initCanvas = () =>
     new fabric.Canvas("canvas", {
-      selectionBorderColor:"black",
+      selectionBorderColor: "black",
       // marginTop:90,
-      height: 300,
+      height: 250,
       width: 200,
-      
     });
 
-    console.log(image)
+  const procssImge = `data:image/png;base64,${image}`;
 
-  const addImg = (e, url, canvi) => {
-    console.log(url)
+  const addImg = (url, canvas) => {
+    console.log(url);
     new fabric.Image.fromURL(url, (img) => {
       img.set({
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          borderColor: "black",
         top: 0,
-       
+        left: 4,
       });
-      img.scale(0.85);
+      img.scale(0.1);
 
-      canvi.add(img);
+      canvas.add(img);
       console.log(img);
-      canvi.renderAll();
+      canvas.renderAll();
       setImgURL("");
     });
   };
 
-
-
-
+  useEffect(() => {
+    addImg(procssImge, canvas);
+  }, [procssImge]);
 
   return (
     <div>
-      {image!==null?<div className="Hover"> 
-        <canvas id="canvas" />
-      </div>:""}
-      <button
-        onClick={(e) => {
-          addImg(e, image, canvas);
-        }}
-      >
-        {" "}
-        Click ME
-      </button>
+      {image !== null ? (
+        <div className="Hover">
+          <canvas id="canvas" />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
 
-
 const mapStateToProps = (state) => {
-  console.log(state)
+  console.log(state);
   return {
     ...state,
   };

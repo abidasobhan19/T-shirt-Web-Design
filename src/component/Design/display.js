@@ -4,57 +4,55 @@ import { Box, Button, Switch } from "@mui/material";
 import Canvastest from "./canvas";
 import { connect } from "react-redux";
 import domtoimage from "dom-to-image";
-import Tshirt from "./TShirt/tshirt"
-import Hoodie from "./Hoodie/hoodie"
+import Tshirt from "./TShirt/tshirt";
+import Hoodie from "./Hoodie/hoodie";
 import Longsleeve from "./LongSleeve/longsleeve";
-import KidsTshirt from "./Kids/kid"
-const Display = ({ Shirt_side, Color,visibleData}) => {
+import KidsTshirt from "./Kids/kid";
+const Display = ({ Shirt_side, Color, visibleData }) => {
+  const [tshirtVisble, setVibility] = useState(false);
+  const [hoddievisible, sethoodievisible] = useState(false);
+  const [longsleevevisible, setlongsleeveVisible] = useState(false);
+  const [kidsTshirtVisible, setKidsTshirtVisible] = useState(false);
 
-
-const [tshirtVisble,setVibility] = useState(false)
-const [hoddievisible,sethoodievisible] = useState(false)
-const [longsleevevisible,setlongsleeveVisible]= useState(false)
-const [kidsTshirtVisible,setKidsTshirtVisible] = useState(false)
-
-useEffect(()=>{
-  switch (visibleData) {
-    case 0:
-      setVibility(true)
-      sethoodievisible(false)
-      setlongsleeveVisible(false)
-        setKidsTshirtVisible(false)
-      break;
-      case 1:
-        if(visibleData===1){
-          setVibility(false)
-          setlongsleeveVisible(false)
-          setKidsTshirtVisible(false)
-          sethoodievisible(true)
-        }
-       
+  useEffect(() => {
+    switch (visibleData) {
+      case 0:
+        setVibility(true);
+        sethoodievisible(false);
+        setlongsleeveVisible(false);
+        setKidsTshirtVisible(false);
         break;
-        case 2:
-          if(visibleData===2){
-            setVibility(false)
-            sethoodievisible(false)
-            setKidsTshirtVisible(false)
-            setlongsleeveVisible(true)
-          }
-          break;
-          case 3:
-            if(visibleData===3){
-              setVibility(false)
-              sethoodievisible(false)
-              setlongsleeveVisible(false)
-              setKidsTshirtVisible(true)
-            }
-            break;
-    
-    default:
-      setVibility(true)
-      break;
-  }
-},[visibleData])
+      case 1:
+        if (visibleData === 1) {
+          setVibility(false);
+          setlongsleeveVisible(false);
+          setKidsTshirtVisible(false);
+          sethoodievisible(true);
+        }
+
+        break;
+      case 2:
+        if (visibleData === 2) {
+          setVibility(false);
+          sethoodievisible(false);
+          setKidsTshirtVisible(false);
+          setlongsleeveVisible(true);
+        }
+        break;
+      case 3:
+        if (visibleData === 3) {
+          setVibility(false);
+          sethoodievisible(false);
+          setlongsleeveVisible(false);
+          setKidsTshirtVisible(true);
+        }
+        break;
+
+      default:
+        setVibility(true);
+        break;
+    }
+  }, [visibleData]);
 
   const getimage = () => {
     console.log("hello");
@@ -75,10 +73,10 @@ useEffect(()=>{
 
   return (
     <Box id="my-node" display="flex" flexGrow="1">
-    {tshirtVisble=== true? <Tshirt/>:""}
-    {hoddievisible===true ? <Hoodie/>:""}
-    {longsleevevisible===true?<Longsleeve/> :""}
-    {kidsTshirtVisible=== true?<KidsTshirt/>:""}
+      {tshirtVisble === true ? <Tshirt /> : ""}
+      {hoddievisible === true ? <Hoodie /> : ""}
+      {longsleevevisible === true ? <Longsleeve /> : ""}
+      {kidsTshirtVisible === true ? <KidsTshirt /> : ""}
       <Box
         style={{
           width: 300,
