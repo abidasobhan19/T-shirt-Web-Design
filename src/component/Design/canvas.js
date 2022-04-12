@@ -4,10 +4,12 @@ import { fabric } from "fabric";
 import { connect } from "react-redux";
 import "../Design/style.css";
 import FFF from "../../img/T-shirt Layout/fffff.jpeg";
-const Cantest = ({ image }) => {
+const Cantest = ({ image, dynamicValue }) => {
   const [canvas, setCanvas] = useState("");
   const [imgURL, setImgURL] = useState("");
+  const [img, setImg] = useState("");
 
+  console.log(img);
   useEffect(() => {
     setCanvas(initCanvas());
   }, []);
@@ -15,7 +17,7 @@ const Cantest = ({ image }) => {
   const initCanvas = () =>
     new fabric.Canvas("canvas", {
       selectionBorderColor: "black",
-      // marginTop:90,
+
       height: 250,
       width: 200,
     });
@@ -23,16 +25,15 @@ const Cantest = ({ image }) => {
   const procssImge = `data:image/png;base64,${image}`;
 
   const addImg = (url, canvas) => {
-    console.log(url);
-    new fabric.Image.fromURL(url, (img) => {
+    var a = new fabric.Image.fromURL(url, (img) => {
       img.set({
+        id: "iii",
         top: 0,
-        left: 4,
+        left: 0,
       });
-      img.scale(0.1);
-
+      img.scale(0.11);
       canvas.add(img);
-      console.log(img);
+
       canvas.renderAll();
       setImgURL("");
     });
@@ -46,7 +47,7 @@ const Cantest = ({ image }) => {
     <div>
       {image !== null ? (
         <div className="Hover">
-          <canvas id="canvas" />
+          <canvas id="canvas"></canvas>
         </div>
       ) : (
         ""

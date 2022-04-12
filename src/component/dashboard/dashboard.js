@@ -4,7 +4,7 @@ import Navbar from "./nav";
 import Display from "../Design/display";
 import Setting from "../Design/setting";
 import Image from "../Design/image";
-
+import DynamicMenu from "../Design/dynamic_menu"; 
 const Dashboard = () => {
 
   const [data , SetInterface] = useState();
@@ -24,6 +24,9 @@ const Dashboard = () => {
       >
         <Display visibleData={data} />
         <Setting SetInterface={SetInterface}/>
+      </Box>
+      <Box>
+        <DynamicMenu />
       </Box>
     </Box>
   );
