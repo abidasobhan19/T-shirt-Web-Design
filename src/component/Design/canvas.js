@@ -7,9 +7,9 @@ import FFF from "../../img/T-shirt Layout/fffff.jpeg";
 const Cantest = ({ image, dynamicValue }) => {
   const [canvas, setCanvas] = useState("");
   const [imgURL, setImgURL] = useState("");
-  const [img, setImg] = useState("");
+  const [dataimg, setImg] = useState();
 
-  console.log(img);
+  const procssImge = `data:image/png;base64,${image}`;
   useEffect(() => {
     setCanvas(initCanvas());
   }, []);
@@ -17,25 +17,37 @@ const Cantest = ({ image, dynamicValue }) => {
   const initCanvas = () =>
     new fabric.Canvas("canvas", {
       selectionBorderColor: "black",
-
+      controlsAboveOverlay: true,
       height: 250,
       width: 200,
     });
 
-  const procssImge = `data:image/png;base64,${image}`;
-
   const addImg = (url, canvas) => {
-    var a = new fabric.Image.fromURL(url, (img) => {
+    new fabric.Image.fromURL(url, (img) => {
       img.set({
-        id: "iii",
-        top: 0,
         left: 0,
+        top: 0,
       });
-      img.scale(0.11);
-      canvas.add(img);
 
-      canvas.renderAll();
+      img.scale(0.11);
+
+      setImg(img);
+      canvas.add(img).renderAll.bind(canvas);
+      canvas.setActiveObject(img);
       setImgURL("");
+    });
+  };
+
+  const handletop = () => {
+    console.log(procssImge);
+    new fabric.Image.fromURL(procssImge, (img) => {
+      img.set({
+        top: 0,
+      });
+      img.scale(0.1);
+      canvas.clear();
+      canvas.add(img).renderAll.bind(canvas);
+      canvas.setActiveObject(img);
     });
   };
 
@@ -48,6 +60,17 @@ const Cantest = ({ image, dynamicValue }) => {
       {image !== null ? (
         <div className="Hover">
           <canvas id="canvas"></canvas>
+          <div>
+            {" "}
+            <button
+              id="moveText"
+              onClick={() => {
+                handletop();
+              }}
+            >
+              Move Text
+            </button>
+          </div>
         </div>
       ) : (
         ""
@@ -57,7 +80,6 @@ const Cantest = ({ image, dynamicValue }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     ...state,
   };

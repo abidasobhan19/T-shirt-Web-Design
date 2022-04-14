@@ -5,6 +5,16 @@ import { setButtonDyncData } from "../../redux/action/button_action";
 import AlignVerticalTopIcon from "@mui/icons-material/AlignVerticalTop";
 import AlignHorizontalCenterIcon from "@mui/icons-material/AlignHorizontalCenter";
 const DynamicMenu = ({ setButtonDyncData }) => {
+  const [value, setValue] = React.useState(30);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  console.log(value);
+  useEffect(() => {
+    setButtonDyncData(value);
+  }, [setButtonDyncData, value]);
   return (
     <Box
       display="flex"
@@ -26,7 +36,7 @@ const DynamicMenu = ({ setButtonDyncData }) => {
             color="primary"
             aria-label="upload picture"
             onClick={() => {
-              console.log("align top");
+              setButtonDyncData(1);
             }}
             component="span"
             style={{ backgroundColor: "white", margin: 5 }}
@@ -47,6 +57,8 @@ const DynamicMenu = ({ setButtonDyncData }) => {
       <Box>
         <Slider
           defaultValue={50}
+          value={value}
+          onChange={handleChange}
           aria-label="Default"
           valueLabelDisplay="auto"
         />
