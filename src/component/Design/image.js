@@ -7,11 +7,11 @@ import { setShirtImage } from "../../redux/action/image_action";
 const Image = ({ setShirtImage }) => {
   const [canvas, setCanvas] = useState();
   const onUpload = (e) => {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
 
     e.preventDefault();
     const { files } = e.target;
-    console.log(files);
+    // console.log(files);
     const localImageUrl = window.URL.createObjectURL(files[0]);
 
     Imgto64(localImageUrl) // Path to the image
@@ -50,7 +50,6 @@ const Image = ({ setShirtImage }) => {
 };
 //   {/* <img src={canvas} style={{ width: 300, height: 200 }} /> */}
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     ...state,
   };

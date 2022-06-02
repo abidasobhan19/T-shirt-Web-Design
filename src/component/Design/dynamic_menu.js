@@ -2,19 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Box, Slider, Divider, IconButton, Typography } from "@mui/material";
 import { connect } from "react-redux";
 import { setButtonDyncData } from "../../redux/action/button_action";
+import { setAlignButtonDyncData } from "../../redux/action/align_button";
+import { setScaleDyncData } from "../../redux/action/scale_action";
 import AlignVerticalTopIcon from "@mui/icons-material/AlignVerticalTop";
 import AlignHorizontalCenterIcon from "@mui/icons-material/AlignHorizontalCenter";
-const DynamicMenu = ({ setButtonDyncData }) => {
-  const [value, setValue] = React.useState(30);
+const DynamicMenu = ({
+  setButtonDyncData,
+  setAlignButtonDyncData,
+  setScaleDyncData,
+}) => {
+  const [value, setValue] = React.useState(0.1);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  console.log(value);
   useEffect(() => {
-    setButtonDyncData(value);
-  }, [setButtonDyncData, value]);
+    setScaleDyncData(value);
+  }, [value]);
   return (
     <Box
       display="flex"
@@ -47,6 +52,9 @@ const DynamicMenu = ({ setButtonDyncData }) => {
             color="primary"
             aria-label="upload picture"
             component="span"
+            onClick={() => {
+              setAlignButtonDyncData(1);
+            }}
             style={{ backgroundColor: "white", margin: 5 }}
           >
             <AlignHorizontalCenterIcon />
@@ -56,11 +64,14 @@ const DynamicMenu = ({ setButtonDyncData }) => {
 
       <Box>
         <Slider
-          defaultValue={50}
+          defaultValue={0.1}
           value={value}
           onChange={handleChange}
           aria-label="Default"
           valueLabelDisplay="auto"
+          step={0.00000000000000001}
+          min={0.1}
+          max={3}
         />
       </Box>
     </Box>
@@ -68,7 +79,7 @@ const DynamicMenu = ({ setButtonDyncData }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     ...state,
   };
@@ -76,6 +87,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setButtonDyncData: (data) => dispatch(setButtonDyncData(data)),
+    setAlignButtonDyncData: (data) => dispatch(setAlignButtonDyncData(data)),
+    setScaleDyncData: (data) => dispatch(setScaleDyncData(data)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(DynamicMenu);

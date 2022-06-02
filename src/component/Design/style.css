@@ -3,3 +3,10 @@
   border: 1px dashed #131212;
   width: 200px;
 }
+
+.Mug:hover {
+  background: transparent;
+  border: 1px dashed #131212;
+  width: 400px;
+  height: 180px;
+}
